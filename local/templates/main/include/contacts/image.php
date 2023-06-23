@@ -1,0 +1,1 @@
+<img src="<?=SITE_TEMPLATE_PATH?>/img/tmp/top-bg2.jpg" alt="">

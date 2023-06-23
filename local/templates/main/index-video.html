@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no">
+	<title>Sitename</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	<link href="css/swiper-bundle.min.css" rel="stylesheet">
+	<link href="css/form-components.css" rel="stylesheet">
+	<link href="css/jquery.fancybox.min.css" rel="stylesheet">
+	<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+	<link href="css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="index">
+	<script>
+		//svg sprite in local storage
+		(function() {
+			const src = 'img/sprite.svg',
+				version = 103,
+				site = 'energy-h.ru',
+				storage = {
+					version: localStorage.getItem('svg-sprite-version' + site),
+					content: localStorage.getItem('svg-sprite-content' + site)
+				};
+			if (storage.version !== null && storage.content !== null) {
+				if (version === Number(storage.version)) {
+					appendSvg(storage.content);
+				} else {
+					svgRequest(src, version);
+				}
+			} else {
+				svgRequest(src, version);
+			}
+
+			function svgRequest(src, version) {
+				let request = new XMLHttpRequest();
+				request.open('GET', src, true);
+				request.send();
+				request.onload = function(e) {
+					if (request.status >= 200 && request.status < 400) {
+						appendSvg(request.responseText);
+						localStorage.setItem('svg-sprite-content' + site, request.responseText);
+						localStorage.setItem('svg-sprite-version' + site, String(version));
+					}
+				}
+			}
+
+			function appendSvg(content) {
+				const div = document.createElement('div');
+				div.innerHTML = content;
+				document.body.insertBefore(div.children[0], document.body.childNodes[0]);
+			}
+		}());
+
+	</script>
+
+	<div class="site-wrapper">
+		<header class="header">
+			<div class="h-top">
+				<div class="container">
+					<div class="ht-flex">
+						<div class="ht-col-l">
+							<a href="mailto:info@energy-h.ru" class="ht-link">info@energy-h.ru</a>
+						</div>
+						<div class="ht-col-r">
+							<div class="h-search-wrp">
+								<form action="#" class="h-search validation" method="post">
+									<button type="submit" class="h-search-submit">
+										<i class="icon-search"></i>
+									</button>
+									<input type="search" data-parsley-errors-messages-disabled required name="textfield" placeholder="Поиск">
+									<button type="button" class="h-search-close">
+										&times;
+									</button>
+								</form>
+							</div>
+							<a href="#contact-us" data-modal class="btn">Связаться с нами</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="h-main">
+				<div class="container">
+					<div class="hm-flex">
+						<div class="hm-col-l">
+							<a href="#" class="logo">
+								<svg width="194" viewBox="0 0 194 75">
+									<use xlink:href="#logo" width="64" height="45" />
+									<use xlink:href="#logo-text" height="65" />
+								</svg>
+							</a>
+						</div>
+						<div class="hm-col-c">
+							<a href="#" class="nav-btn">
+								<span class="nav-ico">
+									<i></i>
+								</span>
+							</a>
+							<ul class="h-nav-list custom">
+								<li><a href="#" class="color">ПРОДУКТЫ И СИСТЕМЫ</a></li>
+								<li><a href="#">НОВОСТИ</a></li>
+								<li><a href="#">КОНТАКТЫ</a></li>
+							</ul>
+						</div>
+						<div class="hm-col-r">
+							<a href="tel:88008000000" class="hm-tel"><i class="icon-phone"></i><span>8 (800) 800-00-00</span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script>
+				let headerObj = document.getElementsByClassName('header');
+				hHeader();
+				window.addEventListener('resize', function() {
+					hHeader();
+				});
+
+				function hHeader() {
+					if (!headerObj.length > 0) return false;
+
+					setTimeout(function() {
+						document.documentElement.style.setProperty('--js-header-height', headerObj[0].offsetHeight + 'px');
+					}, 0);
+				}
+
+			</script>
+		</header>
+		<main class="content">
+			<section class="top-section main-top-screen">
+				<h1 class="hidden">h-energy - оборудование для электроэнергетики</h1>
+				<video poster="img/tmp/main-video.jpg" playsinline autoplay loop muted>
+					<source src="video/main-video.mp4" type="video/mp4">
+				</video>
+				<!--
+				<img src="img/tmp/top-bg5.jpg" alt="">
+				<svg class="ts-logo-decor" width="194" viewBox="0 0 64 45" preserveAspectRatio="xMaxYMin meet">
+					<use xlink:href="#logo" />
+				</svg>
+-->
+				<div class="container">
+					<div class="ts-main">
+						<!--
+						<div class="ts-vertical">
+							<h1 class="caption">h-energy - оборудование для электроэнергетики</h1>
+							<p>
+								являемся экспертом в продуктах и системных решениях для электросетевого комплекса
+							</p>
+							<a href="#" class="btn">Оставить заявку</a>
+						</div>
+-->
+					</div>
+					<div class="ts-bottom">
+						<i class="mouse-ico"></i>
+					</div>
+				</div>
+			</section>
+
+			<div class="container">
+
+				<section class="ed-txt-section m-df">
+					<div class="ed-txt-flex">
+						<div class="ed-txt-main">
+							<h2 class="small m10" style="font-weight: 700;">ПРОИЗВОДИМ И ПОСТАВЛЯЕМ ОБОРУДОВАНИЕ ДЛЯ ЭЛЕКТРОСЕТЕВОГО КОМПЛЕКСА</h2>
+							<p>
+								Мы интегрируем лучшие технологии в области управления электроэнергией, автоматизации в режиме реального времени, услуг и решений для объектов гражданского и жилищного строительства, центров обработки данных, инфраструктуры и промышленности.
+							</p>
+						</div>
+						<div class="ed-txt-counters">
+							<ul class="ed-counters custom scroll-animate">
+								<li>
+									<div class="ed-counter-box">
+										<div class="ed-count">
+											<b data-count-to="2">0</b>
+										</div>
+										<div class="ed-title">
+											РЕГИОНАЛЬНЫХ ЛОГИСТИЧЕСКИХ ЦЕНТРА
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="ed-counter-box">
+										<div class="ed-count">
+											<b data-count-to="18">0</b>
+										</div>
+										<div class="ed-title">
+											ОФИСОВ В КРУПНЕЙШИХ ГОРОДАХ РОССИИ И БЕЛАРУСИ
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="ed-counter-box">
+										<div class="ed-count">
+											<b data-count-to="3000">0</b>+
+										</div>
+										<div class="ed-title">
+											СОТРУДНИКОВ
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="ed-counter-box">
+										<div class="ed-count">
+											<b data-count-to="3">0</b>
+										</div>
+										<div class="ed-title">
+											ЗАВОДА И ЦЕНТР ИННОВАЦИЙ
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+
+
+				<div class="bg-box m-df">
+					<section class="pr-section">
+						<h2 class="m1">Продукты и системы</h2>
+						<p class="m2">
+							Широкий ассортимент высоковольтного оборудования и системы автоматизации, а также сервисное обслуживание.
+						</p>
+						<ul class="df-list list-4 custom m0">
+							<li>
+								<a href="#" class="offer-box">
+									<span class="offer-img">
+										<img src="img/tmp/img25.jpg" alt="">
+									</span>
+									<span class="offer-main">
+										<span class="offer-caption">
+											Высоковольтные выключатели
+										</span>
+										<span class="offer-prop">
+											От 110 до 550 кВ
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="offer-box">
+									<span class="offer-img">
+										<img src="img/tmp/img26.jpg" alt="">
+									</span>
+									<span class="offer-main">
+										<span class="offer-caption">
+											Высоковольтные разъединители
+										</span>
+										<span class="offer-prop">
+											От 110 до 550 кВ
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="offer-box">
+									<span class="offer-img">
+										<img src="img/tmp/img27.jpg" alt="">
+									</span>
+									<span class="offer-main">
+										<span class="offer-caption">
+											Измерительные трансформаторы тока
+										</span>
+										<span class="offer-prop">
+											От 110 до 550 кВ
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="offer-box">
+									<span class="offer-img">
+										<img src="img/tmp/img28.jpg" alt="">
+									</span>
+									<span class="offer-main">
+										<span class="offer-caption">
+											Измерительные трансформаторы напряжения
+										</span>
+										<span class="offer-prop">
+											От 35 до 220 кВ
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="offer-box">
+									<span class="offer-img">
+										<img src="img/tmp/img29.jpg" alt="">
+									</span>
+									<span class="offer-main">
+										<span class="offer-caption">
+											КРУЭ
+										</span>
+										<span class="offer-prop">
+											От 110 до 550 кВ
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="offer-box">
+									<span class="offer-img">
+										<img src="img/tmp/img30.jpg" alt="">
+									</span>
+									<span class="offer-main">
+										<span class="offer-caption">
+											Высоковольтные вводы
+										</span>
+										<span class="offer-prop">
+											От 35 до 220 кВ
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="offer-box">
+									<span class="offer-img">
+										<img src="img/tmp/img31.jpg" alt="">
+									</span>
+									<span class="offer-main">
+										<span class="offer-caption">
+											Батареи статических конденсаторов и ФКУ
+										</span>
+										<span class="offer-prop">
+											От 35 до 330 кВ
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="offer-box">
+									<span class="offer-img">
+										<img src="img/tmp/img32.jpg" alt="">
+									</span>
+									<span class="offer-main">
+										<span class="offer-caption">
+											Сервис
+										</span>
+										<span class="offer-prop">
+											Сервесный центр высоковольтного оборудования
+										</span>
+									</span>
+								</a>
+							</li>
+						</ul>
+
+					</section>
+				</div>
+
+
+				<section class="offers-section m-df">
+					<h2 class="small">Почему H-ENERGY</h2>
+					<p class="m8">
+						Hitachi Energy является новатором в области технологии измерительных трансформаторов и предлагает самую полную линейку продуктов на рынке. Доступ к новейшим технологиям, глобальным источникам и современным процессам обеспечивает долгий срок службы и отвечает самым строгим требованиям, определяемым отраслью. Некоторые из важных преимуществ, предлагаемых Hitachi Energy Supply:
+					</p>
+
+					<div class="ou-slider ed-slider swiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="ed-box">
+									<div class="edb-main">
+										Опыт успешных поставок электротехнического оборудования
+									</div>
+									<div class="edb-count">
+										01
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="ed-box">
+									<div class="edb-main">
+										Грамотный и детальный подход к требованиям заказчика
+									</div>
+									<div class="edb-count">
+										02
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="ed-box">
+									<div class="edb-main">
+										Локализация сборочного производства
+									</div>
+									<div class="edb-count">
+										03
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="ed-box">
+									<div class="edb-main">
+										Сертификация и аттестация оборудования
+									</div>
+									<div class="edb-count">
+										04
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="ed-box">
+									<div class="edb-main">
+										Опыт успешных поставок электротехнического оборудования
+									</div>
+									<div class="edb-count">
+										05
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ou-btn-wrp">
+						<button class="ou-btn sw-button-prev"><i class="icon-arr-md-l"></i></button>
+						<button class="ou-btn sw-button-next"><i class="icon-arr-md-r"></i></button>
+					</div>
+				</section>
+
+				<blockquote class="type-2 m-df scroll-animate">
+					<svg class="bl-logo-decor" width="194" viewBox="0 0 64 45" preserveAspectRatio="xMaxYMid meet">
+						<use xlink:href="#logo" />
+					</svg>
+					<h2 class="small m9">Наша миссия</h2>
+					<p>
+						Мы интегрируем лучшие технологии в области управления электроэнергией, автоматизации в режиме реального времени, услуг и решений для объектов гражданского и жилищного строительства, центров обработки данных, инфраструктуры и промышленности.
+					</p>
+					<div class="bl-wrapper">
+						<div class="bl-text">
+							«Мы отреагировали на растущие потребности и будущие цели, инвестируя в системы управления, мониторинга и автоматизации».
+						</div>
+						<div class="bl-sign">
+							Юха Ярвенсиву, Тампереен Сахковеркко
+						</div>
+					</div>
+				</blockquote>
+
+				<section class="nw-section m-df">
+					<div class="caption-wrp m10">
+						<h2>Новости H-Energy</h2>
+						<div class="caption-ot">
+							<a href="#" class="color">Посмотреть все новости</a>
+						</div>
+					</div>
+
+
+					<ul class="nw-list custom">
+						<li>
+							<div class="nw-box">
+								<a href="#" class="nw-img">
+									<img src="img/tmp/img33.jpg" alt="">
+								</a>
+								<div class="nw-main">
+									<time datetime="2023-05-22">Тема 1, 22.05.2023, 2 минуты чтения</time>
+									<h3 class="caption3"><a href="#">«ТЭС Санкт-Петербург» - новый филиал Группы компаний «h energy»</a></h3>
+									<a href="#" class="link-square">
+										<span>Узнать больше</span>
+										<i class="icon-arr-sm-r"></i>
+									</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="nw-box">
+								<a href="#" class="nw-img">
+									<img src="img/tmp/img34.jpg" alt="">
+								</a>
+								<div class="nw-main">
+									<time datetime="2023-05-22">Тема 1, 22.05.2023, 2 минуты чтения</time>
+									<h3 class="caption3"><a href="#">ГК «H-energy» и ООО «ИРиС» представили новые совместные решения</a></h3>
+									<a href="#" class="link-square">
+										<span>Узнать больше</span>
+										<i class="icon-arr-sm-r"></i>
+									</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="nw-box">
+								<a href="#" class="nw-img">
+									<img src="img/tmp/img35.jpg" alt="">
+								</a>
+								<div class="nw-main">
+									<time datetime="2023-05-22">Тема 1, 22.05.2023, 2 минуты чтения</time>
+									<h3 class="caption3"><a href="#">РУ 1,2 кВ в составе трансформаторной подстанции высокой заводской готовности</a></h3>
+									<a href="#" class="link-square">
+										<span>Узнать больше</span>
+										<i class="icon-arr-sm-r"></i>
+									</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="nw-box">
+								<a href="#" class="nw-img">
+									<img src="img/tmp/img34.jpg" alt="">
+								</a>
+								<div class="nw-main">
+									<time datetime="2023-05-22">Тема 1, 22.05.2023, 2 минуты чтения</time>
+									<h3 class="caption3"><a href="#">ГК «H-energy» и ООО «ИРиС» представили новые совместные решения.</a></h3>
+									<a href="#" class="link-square">
+										<span>Узнать больше</span>
+										<i class="icon-arr-sm-r"></i>
+									</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+
+
+				</section>
+
+				<section class="contact-form-2">
+					<div class="ct-form-flex">
+						<div class="ct-form-main">
+							<div class="ct-form-main-inner">
+								<h2 class="m9" style="font-weight: 700;">ЕСТЬ ВОПРОСЫ? ЗАДАЙТЕ ИХ ПРЯМО СЕЙЧАС!</h2>
+								<p class="m3" style="max-width: 1280px;">
+									Вы можете позвонить нам по телефону <a href="tel:+78008000000">+7 (800) 800-00-00</a> или написать нам на почтуу <a href="mailto:akona@akona.ru">akona@akona.ru</a>. Также Вы можете заполнить поле нижзе и мы свяжемся с Вами в ближайшее время.
+								</p>
+
+								<form action="#" class="f-form validation" method="post">
+									<div class="f-item full">
+										<label class="fc-component fc-input fc-placeholder-shift err-target" data-fs-type="input-default">
+											<span class="fc-in-paceholder"><span>Ваше имя</span></span>
+											<input type="text" placeholder="" value="" name="name">
+										</label>
+									</div>
+									<div class="f-item">
+										<label class="fc-component fc-input fc-placeholder-shift err-target" data-fs-type="input-default">
+											<span class="fc-in-paceholder"><span>Ваш e-mail</span></span>
+											<input type="email" placeholder="" value="" name="name">
+										</label>
+									</div>
+									<div class="f-item">
+										<label class="fc-component fc-input fc-placeholder-shift err-target" data-fs-type="input-default">
+											<span class="fc-in-paceholder"><span>Ваш телефон<b>*</b></span></span>
+											<input type="tel" placeholder="" data-parsley-pattern="\+[0-9]\s\([0-9]{3}\)\s[0-9]{3}-[0-9]{2}-[0-9]{2}" data-parsley-errors-messages-disabled required value="" name="name">
+										</label>
+									</div>
+
+									<div class="f-item full">
+										<label class="fc-component fc-textarea fc-input fc-placeholder-shift" data-fs-type="textarea-default">
+											<span class="fc-in-paceholder"><span>Ваш вопрос</span></span>
+											<textarea rows="1" name="textarea" placeholder=""></textarea>
+										</label>
+									</div>
+									<div class="f-item full form-btn-wrp">
+										<input type="submit" class="btn btn-black" value="СВЯЗАТЬСЯ С НАМИ" name="button">
+										<label class="cr err-target">
+											<input type="checkbox" checked data-parsley-required data-parsley-trigger="click" data-parsley-errors-messages-disabled name="checkbox">
+											<span class="cr-ps">
+												<i class="cr-icon"></i>
+												<span class="cr-text">
+													Нажимая на кнопку «Связаться с нами» Вы даете согласие на обработку <a href="#">персональных данных</a>
+												</span>
+											</span>
+										</label>
+									</div>
+								</form>
+
+							</div>
+						</div>
+						<div class="ct-form-decor">
+							<div class="ct-form-img-outer">
+								<div class="ct-form-img">
+									<img src="img/form-decor.jpg" alt="">
+									<div class="ct-logo">
+										<svg width="194" viewBox="0 0 194 65">
+											<use xlink:href="#logo" width="64" height="45" />
+											<use xlink:href="#logo-text" height="65" />
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="fm">
+				<div class="container">
+					<div class="ft-logo">
+						<div class="f-logo">
+							<svg width="194" viewBox="0 0 194 65">
+								<use xlink:href="#logo" width="64" height="45" />
+								<use xlink:href="#logo-text" height="65" />
+							</svg>
+						</div>
+						<a href="#" class="policy">Политика конфиденциальности</a>
+						<div class="copy">&copy; H-energy 2023</div>
+					</div>
+					<div class="ft-col-l">
+						<div class="ft-ct-box">
+							<div class="f-caption">КОНТАКТНЫЙ ТЕЛЕФОН</div>
+							<a href="tel:88008000000" class="f-caption">8 (800) 800-00-00</a>
+							<a href="mailto:info@energy-h.ru" class="f-caption">info@energy-h.ru</a>
+						</div>
+						<div class="ft-ct-box">
+							<div class="f-caption">НАШ АДРЕС</div>
+							<div class="fm-content">
+								111024, г. Москваул. 2-я Кабельная, д.2, стр.3
+							</div>
+						</div>
+					</div>
+					<div class="ft-col-c">
+						<ul class="ft-nav-list custom">
+							<li><a href="#" class="fmt-link f-caption">ПРОДУКТЫ И СИСТЕМЫ</a></li>
+							<li><a href="#" class="fmt-link f-caption">НОВОСТИ</a></li>
+							<li><a href="#" class="fmt-link f-caption">КОНТАКТЫ</a></li>
+						</ul>
+					</div>
+					<div class="ft-col-r">
+						<ul class="social-list sc-circle custom">
+							<li>
+								<a href="#" class="sc-box">
+									<svg width="28" viewBox="0 0 216 133">
+										<use xlink:href="#vk" />
+									</svg>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="sc-box">
+									<svg width="23" viewBox="0 0 175 157">
+										<use xlink:href="#tlg" />
+									</svg>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="sc-box">
+									<svg width="28" viewBox="0 0 216 133">
+										<use xlink:href="#vk" />
+									</svg>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="sc-box">
+									<svg width="23" viewBox="0 0 175 157">
+										<use xlink:href="#tlg" />
+									</svg>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="sc-box">
+									<svg width="28" viewBox="0 0 216 133">
+										<use xlink:href="#vk" />
+									</svg>
+								</a>
+							</li>
+						</ul>
+						<a href="#" class="link-tr">
+							<span>Название ссылки один</span>
+							<i class="icon-arr-min-t-r"></i>
+						</a>
+						<a href="#" class="link-tr">
+							<span>Название ссылки два</span>
+							<i class="icon-arr-min-t-r"></i>
+						</a>
+						<a href="#" class="link-tr">
+							<span>Название ссылки три</span>
+							<i class="icon-arr-min-t-r"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="fb">
+				<div class="container">
+					<div class="fb-flex">
+						<div class="fb-dev-copy">
+							<div class="copy">&copy; H-energy 2023</div>
+						</div>
+						<div class="fb-dev-policy">
+							<a href="#" class="policy">Политика конфиденциальности</a>
+						</div>
+						<div class="fb-dev-item">
+							<a href="https://akona.ru/" target="_blank" class="dev">
+								Разработка: <span>akona.ru</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<script>
+		setScrollbarSize();
+		window.addEventListener('resize', function() {
+			setScrollbarSize();
+		});
+
+		function setScrollbarSize() {
+			setTimeout(function() {
+				document.documentElement.style.setProperty('--js-scrollbar-size', window.innerWidth - document.documentElement.clientWidth + 'px');
+			}, 0);
+		}
+
+	</script>
+
+
+	<div class="cookie-bar">
+		<div class="container">
+			<div class="cb-flex">
+				<div class="cb-text">
+					Мы используем cookie-файлы для улучшения предоставляемых услуг. Продолжая навигацию по сайту, вы соглашаетесь с <a href="#">правилами использования</a> cookie-файлов.
+				</div>
+				<a href="#" class="btn js-cookie-close">
+					ПРИНИМАЮ
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="contact-us" class="modal" style="display: none;">
+
+		<div class="m-caption caption2 small m1">Связаться с нами</div>
+		<p class="m3">
+			Вы можете позвонить нам по телефону <a href="tel:+78008000000">+7 (800) 800-00-00</a> или написать нам на почту <a href="mailto:akona@akona.ru">akona@akona.ru</a>. Также Вы можете заполнить поле нижзе и мы свяжемся с Вами в ближайшее время.
+		</p>
+
+		<form action="#" class="f-form validation" method="post">
+			<div class="f-item full">
+				<label class="fc-component fc-input fc-placeholder-shift err-target" data-fs-type="input-default">
+					<span class="fc-in-paceholder"><span>Ваше имя</span></span>
+					<input type="text" placeholder="" value="" name="name">
+				</label>
+			</div>
+			<div class="f-item full">
+				<label class="fc-component fc-input fc-placeholder-shift err-target" data-fs-type="input-default">
+					<span class="fc-in-paceholder"><span>Ваш телефон<b>*</b></span></span>
+					<input type="tel" placeholder="" data-parsley-pattern="\+[0-9]\s\([0-9]{3}\)\s[0-9]{3}-[0-9]{2}-[0-9]{2}" data-parsley-errors-messages-disabled required value="" name="name">
+				</label>
+			</div>
+			<div class="f-item full form-btn-wrp">
+				<input type="submit" class="btn" value="СВЯЗАТЬСЯ С НАМИ" name="button">
+				<label class="cr err-target">
+					<input type="checkbox" checked data-parsley-required data-parsley-trigger="click" data-parsley-errors-messages-disabled name="checkbox">
+					<span class="cr-ps">
+						<i class="cr-icon"></i>
+						<span class="cr-text">
+							Нажимая на кнопку «Связаться с нами» Вы даете согласие на обработку <a href="#">персональных данных</a>
+						</span>
+					</span>
+				</label>
+			</div>
+		</form>
+	</div>
+
+
+
+	<div id="request" class="modal" style="display: none;">
+		<div class="top-img-head">
+			<img src="img/tmp/img20.jpg" alt="">
+			<div class="top-img-inner">
+				<div class="m-caption caption2 small">Оформить заявку</div>
+				<div class="m-subcaption">Вводы BRIT</div>
+				<p>
+					Производство: город Хотького, Россия
+				</p>
+				<p>
+					Применение: масло, воздух
+				</p>
+			</div>
+		</div>
+
+		<p class="m3">
+			Вы можете позвонить нам по телефону <a href="tel:+78008000000">+7 (800) 800-00-00</a> или написать нам на почту <a href="mailto:akona@akona.ru">akona@akona.ru</a>. Также Вы можете заполнить поле нижзе и мы свяжемся с Вами в ближайшее время.
+		</p>
+
+		<form action="#" class="f-form validation" method="post">
+			<div class="f-item full">
+				<label class="fc-component fc-input fc-placeholder-shift err-target" data-fs-type="input-default">
+					<span class="fc-in-paceholder"><span>Ваше имя</span></span>
+					<input type="text" placeholder="" value="" name="name">
+				</label>
+			</div>
+			<div class="f-item full">
+				<label class="fc-component fc-input fc-placeholder-shift err-target" data-fs-type="input-default">
+					<span class="fc-in-paceholder"><span>Ваш телефон<b>*</b></span></span>
+					<input type="tel" placeholder="" data-parsley-pattern="\+[0-9]\s\([0-9]{3}\)\s[0-9]{3}-[0-9]{2}-[0-9]{2}" data-parsley-errors-messages-disabled required value="" name="name">
+				</label>
+			</div>
+			<div class="f-item full form-btn-wrp">
+				<input type="submit" class="btn" value="СВЯЗАТЬСЯ С НАМИ" name="button">
+				<label class="cr err-target">
+					<input type="checkbox" checked data-parsley-required data-parsley-trigger="click" data-parsley-errors-messages-disabled name="checkbox">
+					<span class="cr-ps">
+						<i class="cr-icon"></i>
+						<span class="cr-text">
+							Нажимая на кнопку «Связаться с нами» Вы даете согласие на обработку <a href="#">персональных данных</a>
+						</span>
+					</span>
+				</label>
+			</div>
+		</form>
+	</div>
+
+	<script src="js/jquery-3.6.1.min.js"></script>
+	<script src="js/ofi.min.js"></script>
+	<script src="js/jquery.fancybox.min.js"></script>
+	<script src="js/tua-body-scroll-lock.js"></script>
+	<script src="js/swiper-bundle.min.js"></script>
+	<script src="js/smooth-scrollbar.js"></script>
+	<script src="js/parsley.min.js"></script>
+	<script src="js/mutation-summary.js"></script>
+	<script src="js/jquery.inputmask.bundle.min.js"></script>
+	<script src="js/form-components.js"></script>
+	<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+</html>

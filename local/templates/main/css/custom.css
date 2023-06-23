@@ -1,0 +1,12 @@
+.bx-core-adm-dialog button, .bx-core-adm-dialog input, .bx-core-adm-dialog optgroup, .bx-core-adm-dialog select, .bx-core-adm-dialog textarea {
+    -webkit-appearance: auto !important;
+}
+.cs-invbl {
+    display: none;
+}
+.cs-invbl_imp {
+    display: none!important;
+}
+.cs-err {
+    color: red;
+}
