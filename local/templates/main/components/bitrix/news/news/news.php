@@ -63,7 +63,6 @@ if(!empty($_REQUEST['year']))
     </div>
 </section>
 <div class="container">
-    <div class="ls-ctrl">
         <?
         $APPLICATION->IncludeComponent(
             "bitrix:catalog.section.list",
@@ -93,7 +92,6 @@ if(!empty($_REQUEST['year']))
             )
         );
         ?>
-    </div>
     <?$APPLICATION->IncludeComponent(
         "bitrix:news.list",
         "list_news",

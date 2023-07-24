@@ -91,6 +91,50 @@ if ($arSection = $rsSections->Fetch())
         <? endif;?>
     </section>
     <? endif;?>
+    <?
+    $rsSections2 = CIBlockSection::GetList(
+        array(),
+        array(
+            'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+            'SECTION_ID' => $arResult['VARIABLES']['SECTION_ID']
+        ),
+        false,
+        array()
+    );
+    if ($arSection2 = $rsSections2->Fetch())
+    {
+        ?>
+        <?
+        $APPLICATION->IncludeComponent(
+            "bitrix:catalog.section.list",
+            "list_subsect",
+            Array(
+                "ADD_SECTIONS_CHAIN" => "Y",
+                "CACHE_FILTER" => "N",
+                "CACHE_GROUPS" => "Y",
+                "CACHE_TIME" => "36000000",
+                "CACHE_TYPE" => "A",
+                "COUNT_ELEMENTS" => "Y",
+                "COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
+                "FILTER_NAME" => "sectionsFilter",
+                "HIDE_SECTION_NAME" => "N",
+                "IBLOCK_ID" => $arParams['IBLOCK_ID'],
+                "IBLOCK_TYPE" => "products",
+                "SECTION_CODE" => "",
+                "SECTION_FIELDS" => array("",""),
+                "SECTION_ID" => $arResult['VARIABLES']['SECTION_ID'],
+                "SECTION_URL" => "",
+                "SECTION_USER_FIELDS" => array("",""),
+                "SHOW_PARENT_NAME" => "Y",
+                "TOP_DEPTH" => "2",
+                "VIEW_MODE" => "TILE"
+            )
+        );
+        ?><?
+    }
+    else
+    {
+        ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"",
@@ -149,6 +193,7 @@ if ($arSection = $rsSections->Fetch())
 	),
 	$component
 );?>
+    <? } ?>
     <? if(is_array($arResult['CURR_SECTION']['ARR_DOCS']) && count($arResult['CURR_SECTION']['ARR_DOCS'])):?>
         <div class="bg-box">
             <h2 class="small">Документы</h2>

@@ -57,7 +57,9 @@ $APPLICATION->IncludeComponent(
 		"SORT_BY2" => "ID",
 		"SORT_ORDER1" => "ASC",
 		"SORT_ORDER2" => "ASC"
-	)
+	),
+    false,
+    array("HIDE_ICONS" => "Y")
 );
 ?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

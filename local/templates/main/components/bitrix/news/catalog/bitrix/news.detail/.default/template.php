@@ -31,11 +31,18 @@ $arNotNeedProp = ['MORE_PHOTO','DOCS']
                     <strong class="color"><?=$arProp['NAME']?>:</strong> <?=$arProp['VALUE']?>
                 </p>
                 <? endforeach;?>
+                <p>
                 <?=$arResult['PREVIEW_TEXT']?>
+                </p>
                 <a href="#request" data-modal class="btn m4">ОФОРМИТЬ ЗАЯВКУ</a>
                 <i class="mouse-ico"></i>
             </div>
-            <? if($more_img):?>
+            <? if($more_img):
+                if(isset($arResult['DISPLAY_PROPERTIES']['MORE_PHOTO']['FILE_VALUE']['ID']))
+                {
+                    $arResult['DISPLAY_PROPERTIES']['MORE_PHOTO']['FILE_VALUE'] = [$arResult['DISPLAY_PROPERTIES']['MORE_PHOTO']['FILE_VALUE']];
+                }
+                ?>
             <div class="ar-images">
                 <div class="ar-images-inner">
                     <div class="ar-img-slider swiper">

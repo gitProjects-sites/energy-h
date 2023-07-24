@@ -51,6 +51,7 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery-3.6.1.min.js");
 <?
 $APPLICATION->IncludeFile(
 	SITE_TEMPLATE_PATH."/include/jsscript.php",
+    //SITE_TEMPLATE_PATH."/include/sprite_svg.php",
 	Array(),
 	Array("MODE"=>"html", "NAME"=>"текст", "SHOW_BORDER"=>false)
 );

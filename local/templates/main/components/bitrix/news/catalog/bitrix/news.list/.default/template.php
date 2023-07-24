@@ -13,6 +13,7 @@
 $this->setFrameMode(true);
 //echo Sepro\Helpers::printPre($arResult);
 ?>
+<? if(is_array($arResult['ITEMS']) && count($arResult['ITEMS'])):?>
 <section class="offers-section m-df">
     <h2 class="small">Наши предложения</h2>
     <div class="ou-slider offers-slider swiper">
@@ -42,4 +43,4 @@ $this->setFrameMode(true);
         <button class="ou-btn sw-button-next"><i class="icon-arr-md-r"></i></button>
     </div>
 </section>
-
+<? endif;?>

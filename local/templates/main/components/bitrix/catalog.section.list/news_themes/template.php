@@ -34,6 +34,7 @@ $strSectionDelete = CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "SECTION_DELET
 $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_CONFIRM'));
 //echo Sepro\Helpers::printPre($arResult);
 ?>
+<div class="ls-ctrl">
 <div class="ls-ctrl-col-l">
     <div class="ribbon">
         <div class="ribbon-wrp">
@@ -90,4 +91,5 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
         <!--current value-->
         <input class="fc-select-input-js" type="hidden" name="textfield">
     </div>
+</div>
 </div>
