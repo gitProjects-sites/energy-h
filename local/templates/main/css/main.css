@@ -1208,6 +1208,63 @@ body.nav-open .nav-ico:after {
 	margin-bottom: calc(var(--r) * 3.45);
 }
 
+ul.breadcrumb {
+	margin: 0;
+	padding: 2px 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	line-height: 1.2;
+}
+.breadcrumb>li {
+	display: block;
+}
+.breadcrumb>li>span,
+.breadcrumb>li>a {
+	display: block;
+	color: #D9D9D9;
+	text-decoration: none;
+	padding-left: 0.74em;
+	padding-right: 0.28em;
+	position: relative;
+}
+
+.breadcrumb>li>a:hover {
+	text-decoration: underline;
+}
+.breadcrumb>li>span:before,
+.breadcrumb>li>a:before {
+	content: ' / ';
+	position: absolute;
+	text-decoration: none;
+	left: 0;
+	bottom: 0;
+	
+}
+.breadcrumb>li>a:hover:after {
+	text-decoration: none;
+}
+.breadcrumb>li>span {
+	color: #B3B3B3;
+	cursor: default;
+}
+.breadcrumb>li:first-child>* {
+	padding-left: 0;
+}
+.breadcrumb>li:first-child>*:before {
+	display: none;
+}
+.top-section .breadcrumb>li>a {
+	color: rgba(255, 255, 255, 0.5);
+}
+.top-section .breadcrumb>li>span {
+	color: white;
+}
+
+
+
 .footer {
 	background-color: #292929;
 	color: white;

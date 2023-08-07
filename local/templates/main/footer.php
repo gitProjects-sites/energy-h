@@ -163,10 +163,10 @@
 </script>
 
 <?
-if (!isset($_COOKIE['BITRIX_SM_cookie_use']))
-{
+//if (!isset($_COOKIE['BITRIX_SM_cookie_use']))
+//{
 ?>
-<div class="cookie-bar">
+<div class="cookie-bar" style="display: none">
     <div class="container">
         <div class="cb-flex">
             <div class="cb-text">
@@ -174,7 +174,7 @@ if (!isset($_COOKIE['BITRIX_SM_cookie_use']))
                 $APPLICATION->IncludeFile(
                 	SITE_TEMPLATE_PATH."/include/cook_txt.php",
                 	Array(),
-                	Array("MODE"=>"html", "NAME"=>"текст", "SHOW_BORDER"=>false)
+                	Array("MODE"=>"html", "NAME"=>"текст")
                 );
                 ?>
             </div>
@@ -184,7 +184,7 @@ if (!isset($_COOKIE['BITRIX_SM_cookie_use']))
         </div>
     </div>
 </div>
-<? } ?>
+<?// } ?>
 <div id="contact-us" class="modal" style="display: none;">
     <div class="m-caption caption2 small m1">Связаться с нами</div>
     <p class="m3">
@@ -287,6 +287,6 @@ if (!isset($_COOKIE['BITRIX_SM_cookie_use']))
 <script src="<?=SITE_TEMPLATE_PATH?>/js/form-components.js"></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/main.js"></script>
-<script src="<?=SITE_TEMPLATE_PATH?>/js/custom.js"></script>
+<script src="<?=SITE_TEMPLATE_PATH?>/js/custom.js?v=1.1"></script>
 </body>
 </html>

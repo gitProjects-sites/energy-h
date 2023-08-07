@@ -4,6 +4,10 @@ $(function () {
         $('body').addClass('filter');
         userLoad();
     }
+    if(!getCookie('BITRIX_SM_cookie_use'))
+    {
+        $('.cookie-bar').show();
+    }
 });
 
 
@@ -27,9 +31,9 @@ $(document).on('submit', '.js-form', function (e) {
             if(json.SEND)
             {
                 $closest.append('<div class="text-center">'+ json.SEND + '</div>');
-                 $form.fadeOut(500, function () {
-                 $form.remove();
-                 });
+                $form.fadeOut(500, function () {
+                    $form.remove();
+                });
                 //$closest.html($('#tnx').html());
                 /*if(!$('.js-tnx').length)
                 {

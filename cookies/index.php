@@ -1,7 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetPageProperty("title", "ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ");
-$APPLICATION->SetTitle("ПОЛИТИКА КОНФИДЕНЦИ­АЛЬНОСТИ");
+$APPLICATION->SetPageProperty("title", "Правила использования cookie-файлов");
+$APPLICATION->SetTitle("Правила использования cookie-файлов");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:main.include",
 	"",
