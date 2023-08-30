@@ -323,6 +323,29 @@ $('.ou-slider').each(function () {
 	});
 });
 
+$('.gl-slider').each(function () {
+	let that = $(this),
+		btnWrp = that.siblings('.df-arrow-wr');
+
+	let sliderInstance = new Swiper(that[0], {
+		slidesPerView: 'auto',
+		spaceBetween: 0,
+		touchRatio: 1,
+		loop: true,
+		autoHeight: true,
+		resistance: true,
+		resistanceRatio: 0,
+		navigation: {
+			nextEl: btnWrp.find('.df-arrow-next')[0],
+			prevEl: btnWrp.find('.df-arrow-prev')[0]
+		}
+
+	});
+});
+
+
+
+
 
 
 $('.ribbon').each(function () {
@@ -870,6 +893,7 @@ let mapOnScreen = {
 			.setHTML(currentObject[3])
 			.addTo(mapOnScreen.map);
 
+		popup.setMaxWidth('300px');
 		mapOnScreen.allPopups.push(popup);
 
 	},

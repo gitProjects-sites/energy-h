@@ -10,3 +10,13 @@
 .cs-err {
     color: red;
 }
+.fc-select.cs-selected .fc-selected-text {
+    opacity: 1;
+    visibility: visible;
+}
+.fc-component.fc-placeholder-shift.cs-selected .fc-in-paceholder, .fc-component.fc-placeholder-shift.active .fc-in-paceholder {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: matrix3d(0.93, 0, 0.00, 0, 0, 0.93, 0.00, 0, 0, 0, 1, 0, 0, -10, 0, 1);
+    transform: matrix3d(0.93, 0, 0.00, 0, 0, 0.93, 0.00, 0, 0, 0, 1, 0, 0, -10, 0, 1);
+}

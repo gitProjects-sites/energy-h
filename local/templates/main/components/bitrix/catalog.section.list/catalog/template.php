@@ -23,7 +23,12 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
     <div class="container">
         <div class="ts-main">
             <div class="ts-vertical">
-                <div class="brc"><?=$arResult['NAME']?></div>
+                <div class="brc">
+                    <ul class="custom breadcrumb">
+                        <li><a href="/">Главная</a></li>
+                        <li><span><?=$arResult['NAME']?></span></li>
+                    </ul>
+                </div>
 
                 <h1 class="caption m2"><?=$arResult['NAME']?></h1>
                 <p>
@@ -38,6 +43,15 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
 </section>
 <div class="container">
     <section class="pr-section m-df">
+        <div class="m-df">
+            <?
+            $APPLICATION->IncludeFile(
+            	SITE_TEMPLATE_PATH."/include/catalog_txt.php",
+            	Array(),
+            	Array("MODE"=>"html", "NAME"=>"текст")
+            );
+            ?>
+        </div>
     <?
 if (0 < $arResult["SECTIONS_COUNT"])
 {

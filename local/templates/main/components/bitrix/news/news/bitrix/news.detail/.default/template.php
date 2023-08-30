@@ -15,7 +15,13 @@ $more_img = is_array($arResult['DISPLAY_PROPERTIES']['MORE_PHOTO']['VALUE']);
 $arNotNeedProp = ['MORE_PHOTO','DOCS'];
 //echo Sepro\Helpers::printPre($arResult);
 ?>
-    <div class="brc min-top-offset"><?=$arResult['NAME']?></div>
+    <div class="brc min-top-offset">
+        <ul class="custom breadcrumb">
+            <li><a href="/">Главная</a></li>
+            <li><a href="/news/">Новости компании</a></li>
+            <li><span><?=$arResult['NAME']?></span></li>
+        </ul>
+    </div>
 
     <div class="rt-box-wrp">
         <div class="rt-box">
@@ -109,7 +115,26 @@ $arNotNeedProp = ['MORE_PHOTO','DOCS'];
             <div class="img-full m2">
                 <img src="<?=$arResult['DISPLAY_PROPERTIES']['IMAGE2']['FILE_VALUE']['SRC']?>" alt="">
             </div>
+        <? elseif(is_array($arResult['DISPLAY_PROPERTIES']['IMAGE2']['FILE_VALUE']) && count($arResult['DISPLAY_PROPERTIES']['IMAGE2']['FILE_VALUE'])):?>
+        <div class="gl-slider-wrp m10">
+            <div class="gl-slider swiper">
+                <div class="swiper-wrapper">
+                    <? foreach ($arResult['DISPLAY_PROPERTIES']['IMAGE2']['FILE_VALUE'] as $arFile):?>
+                    <div class="swiper-slide">
+                        <a href="<?=$arFile['SRC']?>" data-fancybox class="gl-item">
+                            <img src="<?=$arFile['SRC']?>" alt="">
+                        </a>
+                    </div>
+                    <? endforeach;?>
+                </div>
+            </div>
+            <div class="df-arrow-wr">
+                <button class="df-arrow df-arrow-prev"><i class="icon-arr-md-l"></i></button>
+                <button class="df-arrow df-arrow-next"><i class="icon-arr-md-r"></i></button>
+            </div>
+        </div>
         <? endif;?>
+
         <? if(!empty($arResult['PROPERTIES']['TXT4']['VALUE'])):?>
         <?=$arResult['PROPERTIES']['TXT4']['~VALUE']['TEXT']?>
         <? endif;?>

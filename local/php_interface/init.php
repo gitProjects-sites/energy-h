@@ -31,6 +31,7 @@ define('ELEMENT_VIDEO', 33);
 //define('COMPANY_NAME', COption::GetOptionString('sepro.helper','COMPANY'));
 define('CONTACT_EMAIL', \Bitrix\Main\Config\Option::get("grain.customsettings","EMAIL"));
 define('CONTACT_PHONE', \Bitrix\Main\Config\Option::get("grain.customsettings","PHONE"));
+define('CONTACT_PHONE2', \Bitrix\Main\Config\Option::get("grain.customsettings","PHONE2"));
 define('CONTACT_ADDRESS', \Bitrix\Main\Config\Option::get("grain.customsettings","ADDRESS"));
 
 global $arServices, // все разделы каталога

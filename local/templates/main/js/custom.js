@@ -10,6 +10,13 @@ $(function () {
     }
 });
 
+$(document).on('change', '.js-theme-sel', function(e){
+    e.preventDefault();
+    var $this = $(this),
+        link = $this.val();
+    //console.log(link);
+    window.location = link;
+});
 
 $(document).on('submit', '.js-form', function (e) {
     //console.log('submit');

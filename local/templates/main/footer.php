@@ -22,6 +22,7 @@
                     <div class="ft-ct-box">
                         <div class="f-caption">КОНТАКТНЫЙ ТЕЛЕФОН</div>
                         <a href="tel:<?=CAkon::setPhoneNum(CONTACT_PHONE)?>" class="f-caption"><?=CONTACT_PHONE?></a>
+                        <a href="tel:<?=CAkon::setPhoneNum(CONTACT_PHONE2)?>" class="f-caption"><?=CONTACT_PHONE2?></a>
                         <a href="mailto:<?=CONTACT_EMAIL?>" class="f-caption"><?=CONTACT_EMAIL?></a>
                     </div>
                     <div class="ft-ct-box">
@@ -269,7 +270,7 @@
                 <span class="cr-ps">
 						<i class="cr-icon"></i>
 						<span class="cr-text">
-							Нажимая на кнопку «Связаться с нами» Вы даете согласие на обработку <a href="#">персональных данных</a>
+							Нажимая на кнопку «Связаться с нами» Вы даете согласие на обработку <a href="/policy/">персональных данных</a>
 						</span>
 					</span>
             </label>

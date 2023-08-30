@@ -45,7 +45,13 @@ if ($arSection = $rsSections->Fetch())
     <div class="container">
         <div class="ts-main">
             <div class="ts-vertical">
-                <div class="brc"><?=$arResult['NAME']?></div>
+                <div class="brc">
+                    <ul class="custom breadcrumb">
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/news/"><?=$arResult['NAME']?></a></li>
+                        <li><span><?=$arResult['CURR_SECTION']['NAME']?></span></li>
+                    </ul>
+                </div>
                 <h1 class="caption m2"><?=$arResult['CURR_SECTION']['NAME']?></h1>
                 <p>
                     <?=$arResult['CURR_SECTION']['UF_BUNN_TXT']?>

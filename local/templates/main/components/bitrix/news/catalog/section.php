@@ -45,7 +45,38 @@ if ($arSection = $rsSections->Fetch())
     <div class="container">
         <div class="ts-main">
             <div class="ts-vertical">
-                <div class="brc"><?=$arResult['CURR_SECTION']['NAME']?></div>
+                <div class="brc">
+
+                    <ul class="custom breadcrumb">
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/products-and-solutions/">Продукты и системы</a></li>
+                        <?
+                        $nav = CIBlockSection::GetNavChain($arParams["IBLOCK_ID"], $arResult["VARIABLES"]["SECTION_ID"]);
+                        $arSections = [];
+                        while ($arNav=$nav->GetNext()) {
+                            $arSections[$arNav['CODE']] = $arNav['NAME'];
+                        }
+                        $counter = 0;
+                        $res_code = '/';
+                        foreach ($arSections as $code => $name):
+                            $counter++;
+                            if($counter < count($arSections))
+                            {
+                                $res_code .= $code.'/';
+                                ?>
+                                <li><a href="/products-and-solutions<?=$res_code?>"><?=$name?></a></li>
+                                <?
+                            }
+                            else
+                            {
+                                ?>
+                                <li><span><?= $name ?></span></li><?
+                            }
+                        endforeach;
+                        ?>
+                        <!--li><span><?=$arResult['NAME']?></span></li-->
+                    </ul>
+                    <?//=$arResult['CURR_SECTION']['NAME']?></div>
                 <h1 class="caption m2"><?=$arResult['CURR_SECTION']['NAME']?></h1>
                 <p>
                     <?=$arResult['CURR_SECTION']['UF_BUNN_TXT']?>

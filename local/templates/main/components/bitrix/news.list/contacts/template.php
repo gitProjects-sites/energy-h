@@ -26,7 +26,12 @@ if($ar_res = $res->GetNext())
     <div class="container">
         <div class="ts-main">
             <div class="ts-vertical">
-                <div class="brc">Контакты</div>
+                <div class="brc">
+                    <ul class="custom breadcrumb">
+                        <li><a href="/">Главная</a></li>
+                        <li><span>Контакты</span></li>
+                    </ul>
+                </div>
 
                 <h1 class="caption m2"><?=$arResult['NAME']?></h1>
                 <p>
@@ -61,6 +66,7 @@ foreach ($arResult['ITEMS'] as $arItem)
     //$arSections[$arItem['PROPERTIES']['SECTION']['VALUE_ENUM_ID']] = ['NAME' => $arItem['PROPERTIES']['SECTION']['VALUE'], 'ITEMS' => $arItem];
     $arSections[$arItem['PROPERTIES']['SECTION']['VALUE_ENUM_ID']][] = $arItem;
 }
+//echo Sepro\Helpers::printPre($arSections);
 foreach ($arSections as $arSection)
 {
     ?>
@@ -117,10 +123,19 @@ foreach ($arSections as $arSection)
                     //[2] lng
                     //[3] popup
                     <? foreach ($arCoordProps as $id => $arCoordProp):
-                    $html_works = '';
+                    $html_works = $dop_phone = '';
+                    if(!empty($arCoordProp[43][0]))
+                    {
+                        $dop_phone = '
+                        <a href="tel:'.CAkon::setPhoneNum($arCoordProp[43][0]).'" class="map-tel">'.$arCoordProp[43][0].'</a>';
+                    }
+                    //$services = false;
                     foreach ($arCoordProp['WORKS'] as $wname)
                     {
-                        $html_works .= '<div class="map-type">'.$wname.'</div>';
+                        $sclass = '';
+                        if(strstr($wname, 'ервис')) $sclass = ' map-service';
+                        $html_works .= '<div class="map-type'.$sclass.'">'.$wname.'</div>';
+                        //$services = true;
                     }
                     ?>
                     [
@@ -131,7 +146,7 @@ foreach ($arSections as $arSection)
                             <div class="map-caption">'.$arCoordProp['NAME'].'</div>
                             <div class="map-address">'.$arCoordProp[36][0].'</div>'
                             .$html_works.
-                            '<a href="tel:'.CAkon::setPhoneNum($arCoordProp[38][0]).'" class="map-tel">'.$arCoordProp[38][0].'</a>
+                            '<a href="tel:'.CAkon::setPhoneNum($arCoordProp[38][0]).'" class="map-tel">'.$arCoordProp[38][0].'</a>'.$dop_phone.'
                             <div class="map-timework">'.$arCoordProp[37][0].'</div>
                             <div class="map-coordinates"><span>'.$arCoordProp[33][0].',</span> <span>'.$arCoordProp[34][0].'</span></div>
                         </div>`';?>

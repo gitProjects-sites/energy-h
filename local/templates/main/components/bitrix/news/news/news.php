@@ -49,7 +49,12 @@ if(!empty($_REQUEST['year']))
     <div class="container">
         <div class="ts-main">
             <div class="ts-vertical">
-                <div class="brc"><?=$arResult['NAME']?></div>
+                <div class="brc">
+                    <ul class="custom breadcrumb">
+                        <li><a href="/">Главная</a></li>
+                        <li><span><?=$arResult['NAME']?></span></li>
+                    </ul>
+                </div>
 
                 <h1 class="caption m2"><?=$arResult['NAME']?></h1>
                 <p>

@@ -35,7 +35,80 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
 //echo Sepro\Helpers::printPre($arResult);
 ?>
 <div class="ls-ctrl">
-<div class="ls-ctrl-col-l">
+    <div class="ls-ctrl-col-l">
+        <?
+        $first = true;
+        $curr_sect = $arParams['CURR_SECTION'];
+        if($curr_sect)
+        {
+            foreach ($arResult['SECTIONS'] as $arSection)
+            {
+                if($curr_sect == $arSection['ID'])
+                {
+                    $curr_name = $arSection['NAME'];
+                }
+            }
+        }
+        else
+        {
+            $curr_name = $arResult['SECTIONS'][0]['NAME'];
+        }
+        foreach ($arResult['SECTIONS'] as &$arSection)
+        {
+        $this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
+        $this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
+        ?>
+        <? if($first): $first = false;?>
+            <div class="fc-component fc-select fc-placeholder-shift fc-select-default-js cs-selected" data-fs-type="select-default">
+                <button class="fc-select-title fc-select-title-js">
+                <span class="fc-select-title-wrapper fc-select-title-wrapper-js">
+                    <span class="fc-in-paceholder fc-select-title-placeholder-js">Темы</span>
+                    <span class="fc-selected-text fc-selected-text-js">
+                        <span><? echo $curr_name; ?></span>
+                    </span>
+                </span>
+                </button>
+                <div class="fc-select-drop-down fc-select-drop-down-js">
+                    <div class="fc-select-scroll fc-select-scroll-js">
+                        <ul class="fc-select-list fc-select-list-js custom">
+                <? endif;?>
+                            <li><button data-val="<? echo $arSection['SECTION_PAGE_URL']; ?>"><? echo $arSection['NAME']; ?></button></li>
+                <?
+            }
+            unset($arSection);
+            ?>
+                    </ul>
+                </div>
+            </div>
+            <!--current value-->
+            <input class="fc-select-input-js js-theme-sel" type="hidden" name="textfield">
+        </div>
+
+
+        <div class="fc-component fc-select fc-placeholder-shift fc-select-default-js" data-fs-type="select-default">
+            <button class="fc-select-title fc-select-title-js">
+                <span class="fc-select-title-wrapper fc-select-title-wrapper-js">
+                    <span class="fc-in-paceholder fc-select-title-placeholder-js">Год публикации</span>
+                    <span class="fc-selected-text fc-selected-text-js"></span>
+                </span>
+            </button>
+            <div class="fc-select-drop-down fc-select-drop-down-js">
+                <div class="fc-select-scroll fc-select-scroll-js">
+                    <ul class="fc-select-list fc-select-list-js custom">
+                        <li><button data-val="">Нет</button></li>
+                        <? foreach ($arItemsDATE[$curr_sect] as $year):?>
+                            <li><button data-val="<?=$year?>"><?=$year?></button></li>
+                        <? endforeach;?>
+                    </ul>
+                </div>
+            </div>
+            <!--current value-->
+            <input class="fc-select-input-js" type="hidden" name="textfield">
+        </div>
+    </div>
+
+
+<?/*div class="ls-ctrl-col-l">
     <div class="ribbon">
         <div class="ribbon-wrp">
             <div class="ribbon-slider swiper">
@@ -91,5 +164,5 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
         <!--current value-->
         <input class="fc-select-input-js" type="hidden" name="textfield">
     </div>
-</div>
+</div*/?>
 </div>

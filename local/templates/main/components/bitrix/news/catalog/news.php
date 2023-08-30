@@ -40,6 +40,8 @@ $APPLICATION->IncludeComponent(
         "SHOW_PARENT_NAME" => "Y",
         "TOP_DEPTH" => "2",
         "VIEW_MODE" => "TILE"
-    )
+    ),
+    false,
+    array('HIDE_ICONS' => "Y")
 );
 ?>

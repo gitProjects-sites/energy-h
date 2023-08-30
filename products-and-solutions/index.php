@@ -1,6 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Заголовок");
+$APPLICATION->SetPageProperty("title", "Высоковольтное оборудование  и системы автоматизации для энергетики ");
+$APPLICATION->SetTitle("H energy-оборудование для энергетики");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:news",
 	"catalog",
@@ -72,7 +73,9 @@ $APPLICATION->SetTitle("Заголовок");
 		"USE_RSS" => "N",
 		"USE_SEARCH" => "N",
 		"USE_SHARE" => "N"
-	)
+	),
+    false,
+    array('HIDE_ICONS' => "Y")
 );?>
 
 <?/*$APPLICATION->IncludeComponent(
